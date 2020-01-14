@@ -19,6 +19,8 @@ module.exports = function(app) {
 
         res.redirect('back');
     });
+
+    
     app.delete("/api/notes/:id", function (req,res) {
         console.log(req.params.id);
         notesdata.splice((req.params.id -1),1);
