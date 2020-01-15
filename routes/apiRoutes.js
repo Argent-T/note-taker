@@ -24,8 +24,10 @@ module.exports = function(app) {
     app.delete("/api/notes/:id", function (req,res) {
         console.log(req.params.id);
         notesdata.splice((req.params.id -1),1);
+        let save = JSON.stringify(notesdata);
         fs.writeFileSync("./db/db.json",save);
-        res.redirect('back');
+        
+        return res.json(notesdata);
     });
 
     function addId() {
